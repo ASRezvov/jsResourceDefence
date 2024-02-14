@@ -5,13 +5,14 @@
 
 ---
 
-In Adobe JSX-scripts we have technology of protection code, like Export As Binary. 
+Adobe JSX-scripts has technology of protection code, known "Export As Binary". 
 After this we have JSXBIN-script, & code in this script is human unreadable.
 But, if we have <javascriptresource> in our code, they begin unreadable for applications.
 
 What structure of script with <javascriptresource> and with JSXBIN protection?
 
-```<javascriptresource>
+```
+<javascriptresource>
     <name>Script Name</name>
     <menu>filter</menu>
     <about>about script</about>
