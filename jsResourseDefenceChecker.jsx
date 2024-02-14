@@ -7,27 +7,14 @@
 
 //##################################################################################################################//
 //########                                                                                                  ########//
-//########                          Copy next part of code to your script                                   ########//
+//########          Replace above in code default <javascriptresource> to your <javascriptresource>         ########//
+//########                                                                                                  ########//
+//########          Replace below in code default function to function,                                     ########//
+//########               which your buid by "jsResourseDefenceBuilder.jsx"                                  ########//
 //########                                                                                                  ########//
 //##################################################################################################################//
 
-
 function ifJSResourseNotModify(){
-    
-    //#####################################################################################//
-    //########                                                                     ########//
-    //########     Build this array with script "jsResourseDefenceBuilder.jsx"     ########//
-    //########         Run it in ExtendScript Tool Kit                             ########//
-    //########         & copy it from ExtendScript "Javascript console"            ########//
-    //########                                                                     ########//
-    //########     This is an example of <javascriptresource>                      ########//
-    //########                                                                     ########//
-    //########     If you want to check correctness, paste your                    ########//
-    //########         <javascriptresource> to the begin of this file              ########//
-    //########         & run this script in ESTK/                                  ########//
-    //########                                                                     ########//
-    //#####################################################################################//
-
     var jsResourceArray = [
         [3,"<javascriptresource>"],
         [25,"<name>scriptName</name>"],
@@ -43,26 +30,26 @@ function ifJSResourseNotModify(){
     return true;
 
     function returnLineFromMyCode(position) {
-        var fileWithMyScript = new File($.fileName) ;
-        var lineOfCode ;
+        var fileWithMyScript = new File($.fileName);
+        var lineOfCode;
         try {
-            fileWithMyScript.open('r') ;
-            fileWithMyScript.seek(position) ;
-            lineOfCode = fileWithMyScript.readln() ;
+            fileWithMyScript.open('r');
+            fileWithMyScript.seek(position);
+            lineOfCode = fileWithMyScript.readln();
         } catch(someError) {
-            alert(someError) ;
+            alert(someError);
         } finally {
             try {
                 fileWithMyScript.close();
             } catch(someError) {}
         }
-        return lineOfCode ;
+        return lineOfCode;
     }
 }
 
 //##################################################################################################################//
 //########                                                                                                  ########//
-//########                          End of part of code, which need to copy                                 ########//
+//########                                     End of default function                                      ########//
 //########                                                                                                  ########//
 //##################################################################################################################//
 

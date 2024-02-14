@@ -9,14 +9,19 @@
 //########                                                                     ########
 //########    Paste your <javascriptresource> to the begin of this script      ########
 //########    paste natural N - quantity of lines with <javascriptresource>,   ########
-//########        which you want to protect against change                     ########
+//########        which you want to protect against change,                    ########
 //########        to the last line of code                                     ########
 //########                                                                     ########
 //########    After, save this JSX-script and run it under ESTK.               ########
 //########                                                                     ########
-//########    After, you see an array in ESTK Javascript Console,              ########
+//########    After, you see a code of function "ifJSResourseNotModify()"      ########
+//########        in ESTK Javascript Console,                                  ########
+//########        copy it & paste to your code in file with same               ########
+//########        <javascriptresource> to part under JSXBIN protection         ########
+//########                                                                     ########
+//########    If you want to check correctness of returned code                ########
 //########        paste it to code in "jsResourseDefenceChecker.jsx"           ########
-//########        & make a function, which return false, if                    ########
+//########        & now you have a function, which return false, if            ########
 //########        <javascriptresource> changes.                                ########
 //########                                                                     ########
 //#####################################################################################
@@ -55,12 +60,26 @@ function buldArrayOfNumAndString(codeLinesOfJSResource){
         strOfCode = strOfCodeNext;
         i++;
     }
-    var result = "\r    var jsResourceArray = [\r";
+    var functionCode = "\r\r\rfunction ifJSResourseNotModify(){";
+
+    functionCode += "\r    var jsResourceArray = [\r";
     for (i=0; i< codeLinesOfJSResource; i++){
-        result += "        [" + arrOfNumAndString[i] + "],\r"
+        functionCode += "        [" + arrOfNumAndString[i] + "],\r";
     }
-    result += "    ];";
-    return result;
+    functionCode += "    ];";
+
+    functionCode += "\r\r    for (var i=0; i<jsResourceArray.length; i++){";
+    functionCode += "\r        if (returnLineFromMyCode(jsResourceArray[i][0]) !== jsResourceArray[i][1]) {return false}";
+    functionCode += "\r    }\r    return true;\r\r    function returnLineFromMyCode(position) {";
+    functionCode += "\r        var fileWithMyScript = new File($.fileName);";
+    functionCode += "\r        var lineOfCode;\r        try {";
+    functionCode += "\r            fileWithMyScript.open('r');\r            fileWithMyScript.seek(position);";
+    functionCode += "\r            lineOfCode = fileWithMyScript.readln();\r        } catch(someError) {";
+    functionCode += "\r            alert(someError);\r        } finally {\r            try {";
+    functionCode += "\r                fileWithMyScript.close();\r            } catch(someError) {}";
+    functionCode += "\r        }\r        return lineOfCode;\r    }\r}"
+
+    return functionCode;
 }
 
 buldArrayOfNumAndString(); // paste quantity of lines with <javascriptresource>
