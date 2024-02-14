@@ -1,15 +1,15 @@
 ### Script for Adobe applications
 ---
 
-## Protect /<javascriptresource/> with JSXBIN
+## Protect "javascriptresource" with JSXBIN
 
 ---
 
 Adobe JSX-scripts has technology of protection code, known "Export As Binary". 
 After this we have JSXBIN-script, & code in this script is human unreadable.
-But, if we have /<javascriptresource/> in our code, they begin unreadable for applications.
+But, if we have "javascriptresource" in our code, they begin unreadable for applications.
 
-What structure of script with /<javascriptresource/> and with JSXBIN protection?
+What structure of script with "javascriptresource" and with JSXBIN protection?
 
 ```
 <javascriptresource>
@@ -22,12 +22,12 @@ What structure of script with /<javascriptresource/> and with JSXBIN protection?
 eval("""@JSXBIN@ES@2.0@MyBbyBn.... code from jsxbin file .....""")
 ```
 
-But in this case /<javascriptresource/> section is without any protection.
+But in this case "javascriptresource" section is without any protection.
 
 ---
 
 Script "jsResourseDefenceBuilder.jsx" build a code of function,
-which return "false" if /<javascriptresource/> modified by user.
+which return "false" if "javascriptresource" modified by user.
 
 This function we paste to our script, make JSXBIN, and paste this JSXBIN code,
 as parameter of "eval()".
