@@ -19,10 +19,11 @@
 //########        copy it & paste to your code in file with same               ########
 //########        <javascriptresource> to part under JSXBIN protection         ########
 //########                                                                     ########
+//########        & now you have a function in your script, which              ########
+//########        return false, if <javascriptresource> changed.               ########
+//########                                                                     ########
 //########    If you want to check correctness of returned code                ########
 //########        paste it to code in "jsResourseDefenceChecker.jsx"           ########
-//########        & now you have a function, which return false, if            ########
-//########        <javascriptresource> changes.                                ########
 //########                                                                     ########
 //#####################################################################################
 
