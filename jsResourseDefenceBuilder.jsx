@@ -51,13 +51,15 @@ function buldArrayOfNumAndString(codeLinesOfJSResource){
     var arrOfNumAndString = [];
 
     var i=1;
+    var strOfCodePrevious = "";
     var strOfCode ="";
     while (arrOfNumAndString.length < codeLinesOfJSResource){
         strOfCodeNext = returnLineFromMyCode(i) || "";
-        if (strOfCodeNext.length>strOfCode.length){
+        if ((strOfCodeNext.length>strOfCode.length)&&(strOfCodeNext.length>strOfCodePrevious.length)){
             var arrOfNumAndStringElement = [i, "\"" +strOfCodeNext + "\""];
             arrOfNumAndString.push(arrOfNumAndStringElement);
         }
+        strOfCodePrevious = strOfCode;
         strOfCode = strOfCodeNext;
         i++;
     }
